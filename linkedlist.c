@@ -23,6 +23,29 @@ void add(llnode **head, int val) {
 	}
 }
 
+
+void del(llnode **head, int val) {
+	llnode *tmp = *head;	
+	llnode *prev = *head;	
+	
+	while (tmp != NULL) {
+		// If value was found, check if we're removing the head	
+		if (tmp->value == val) {
+			if (tmp == *head) {				
+				*head = tmp->next;				
+			} else {				
+				prev->next = tmp->next;
+			}
+			free(tmp);						
+			return;
+		}
+		prev = tmp;
+		tmp = tmp->next;
+	}	
+	printf("Value %d not found.\n", val);		
+}
+
+
 void freelist(llnode *head) {
 	llnode *tmp;
 
@@ -34,6 +57,7 @@ void freelist(llnode *head) {
 		head = tmp;
 	}
 }
+
 
 void printlist(llnode *head) {
 	llnode *tmp = head;

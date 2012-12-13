@@ -4,5 +4,7 @@ typedef struct list_node {
 } llnode;
 
 void add(llnode **head, int val);
+void del(llnode **head, int val);
 void freelist(llnode *head);
 void printlist(llnode *head);
+
